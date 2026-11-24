@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenpasture Website Design Seminar</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+  body { background: #f4f4f4; color: #222; }
+  .top { background: #0a7a2f; color: white; text-align: center; padding: 30px 15px; }
+  .top h1 { font-size: 32px; }
+  .top h2 { color: #ffe600; font-size: 22px; margin-top: 10px; }
+  .countdown { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .countdown div { background: white; color: #111; padding: 12px; border-radius: 10px; min-width: 70px; }
+  .countdown b { font-size: 24px; display: block; }
+  .countdown span { font-size: 12px; }
+  .box { background: white; max-width: 700px; margin: 20px auto; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  .price { background: #ffe600; text-align: center; padding: 15px; border-radius: 10px; font-size: 20px; font-weight: bold; }
+  .price span { color: red; }
+  ul { margin: 20px 0; line-height: 1.8; font-size: 16px; }
+  .venue { background: #111; color: #ffe600; text-align: center; padding: 15px; border-radius: 10px; font-weight: bold; }
+  .pay { background: #e8f5e9; border: 2px dashed #0a7a2f; text-align: center; padding: 15px; border-radius: 10px; margin-top: 20px; }
+  .pay b { font-size: 22px; }
+  input, select { width: 100%; padding: 13px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
+  .btn { display: block; text-align: center; background: #0a7a2f; color: white; border: none; width: 100%; padding: 16px; border-radius: 10px; font-size: 20px; font-weight: bold; margin-top: 10px; cursor: pointer; text-decoration: none; }
+  .btn-yellow { background: #ffe600; color: #111; }
+  .footer { text-align: center; padding: 15px; font-size: 14px; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>WEBSITE DESIGN SEMINAR</h1>
+  <h2>100% PRACTICAL IN 1 DAY</h2>
+  <p>Saturday, Nov 29, 2026 | 10AM Prompt</p>
+  <div class="countdown">
+    <div><b id="days">00</b><span>DAYS</span></div>
+    <div><b id="hours">00</b><span>HOURS</span></div>
+    <div><b id="mins">00</b><span>MINS</span></div>
+    <div><b id="secs">00</b><span>SECS</span></div>
+  </div>
+</div>
+
+<div class="box">
+  <div class="price">₦5,000 Only For First 10 People <br><span>After That: ₦10,000</span></div>
+  <ul>
+    <li>✅ Build a website with HTML & CSS</li>
+    <li>✅ Publish your website online</li>
+    <li>✅ Buy domain & hosting</li>
+    <li>✅ Charge clients and make money</li>
+    <li>✅ Free Certificate + Training Materials</li>
+  </ul>
+  <div class="venue">VENUE: Greenpasture Computer Training Centre<br>A3 Samadex Plaza, Idi-Iroko</div>
+
+  <div class="pay">
+    <p>STEP 1: PAY ₦5,000 TO SECURE YOUR SEAT</p>
+    <p style="margin:8px 0;">Bank: <b>OPAY</b></p>
+    <p>Account Number: <b id="acct">8030693267</b></p>
+    <p style="font-size:14px;">Account Name: Greenpasture</p>
+    <button onclick="copyAcct()" style="padding:8px 15px; margin-top:8px; border:none; background:#0a7a2f; color:white; border-radius:6px; cursor:pointer;">Copy Account Number</button>
+  </div>
+
+  <h3 style="margin-top:25px; text-align:center;">STEP 2: REGISTER NOW</h3>
+  <form onsubmit="register(event)">
+    <input type="text" id="name" placeholder="Your Full Name" required>
+    <input type="tel" id="phone" placeholder="Your WhatsApp Number" required>
+    <select id="level" required>
+      <option value="">Select Your Level</option>
+      <option>Student</option>
+      <option>Business Owner</option>
+      <option>Beginner</option>
+      <option>Worker</option>
+    </select>
+    <button class="btn" type="submit">I HAVE PAID - SEND RECEIPT ON WHATSAPP</button>
+  </form>
+
+  <a class="btn btn-yellow" href="https://wa.me/2348076925298?text=Hello%20Greenpasture,%20I%20want%20to%20ask%20about%20the%20Website%20Design%20Seminar">CHAT ON WHATSAPP: 08076925298</a>
+</div>
+
+<div class="footer">© 2026 Greenpasture Computer Training Centre | 08076925298</div>
+
+<script>
+  const target = new Date("Nov 29, 2026 10:00:00").getTime();
+  setInterval(function(){
+    const now = new Date().getTime();
+    const diff = target - now;
+    if(diff < 0){ return; }
+    document.getElementById("days").innerText = Math.floor(diff / (1000*60*60*24));
+    document.getElementById("hours").innerText = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    document.getElementById("mins").innerText = Math.floor((diff % (1000*60*60)) / (1000*60));
+    document.getElementById("secs").innerText = Math.floor((diff % (1000*60)) / 1000);
+  }, 1000);
+
+  function copyAcct(){
+    navigator.clipboard.writeText("8030693267");
+    alert("Account number copied! 8030693267 - OPAY");
+  }
+
+  function register(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const level = document.getElementById("level").value;
+    const msg = "Hello Greenpasture, I have paid for the Website Design Seminar.%0AName: " + name + "%0APhone: " + phone + "%0ALevel: " + level + "%0A%0AI will send my receipt now.";
+    window.open("https://wa.me/2348076925298?text=" + msg, "_blank");
+  }
+</script>
+
+</body>
+</html>
